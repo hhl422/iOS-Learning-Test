@@ -1,12 +1,39 @@
 # iOS-Learning-Test
 hhl's Objective-C and iOS learning notes and test demo
 
-##[iOS 网络请求](https://www.jianshu.com/p/c34f0740f178)
-###[AFNetworking](https://github.com/AFNetworking/AFNetworking)
+<br>
+## 多线程
+### [NSThread](https://developer.apple.com/documentation/foundation/nsthread?language=objc)
+    线程安全解决方案：
+    可以给线程加锁，在一个线程执行该操作的时候，不允许其他线程进行操作。iOS 实现线程加锁有很多种方式。@synchronized、 NSLock、NSRecursiveLock、NSCondition、NSConditionLock、pthread_mutex、dispatch_semaphore、OSSpinLock、atomic(property) set/ge等等各种方式。
 
-###**CFNetworking**
+### [NSOperationQueue](https://developer.apple.com/documentation/foundation/nsoperationqueue?language=objc)
 
-####[CFNetwork编程指南（一）——CFNetwork概念（CFNetwork Concepts）](https://blog.csdn.net/HDFQQ188816190/article/details/52672694)
+### [Grand Central Dispatch(GCD)](https://developer.apple.com/documentation/dispatch?language=objc)
+[iOS 多线程：『GCD』详尽总结](https://www.jianshu.com/p/2d57c72016c6)
+
+```
+// 同步执行任务创建方法
+dispatch_sync(queue, ^{
+    // 这里放同步执行任务代码
+});
+// 异步执行任务创建方法
+dispatch_async(queue, ^{
+    // 这里放异步执行任务代码
+});
+```
+| 区别 | 并发队列 | 串行队列 | 主队列  |
+| :------| ------: |------: | :------: |
+| 同步(sync) | 没有开启新线程，串行执行任务 | 没有开启新线程，串行执行任务 |主线程调用：死锁卡住不执行<br>>其他线程调用：没有开启新线程，串行执行任务 |
+| 异步(async) | 有开启新线程，并发执行任务 | 有开启新线程(1条)，串行执行任务 | 没有开启新线程，串行执行任务 |
+
+<br>
+## [iOS 网络请求](https://www.jianshu.com/p/c34f0740f178)
+### [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+
+### **CFNetworking**
+
+#### [CFNetwork编程指南（一）——CFNetwork概念（CFNetwork Concepts）](https://blog.csdn.net/HDFQQ188816190/article/details/52672694)
 
 > Web Kit -> NSURL -> CFNetwork -> BSD scokets
 
@@ -31,10 +58,10 @@ CFNetwork依赖的两个API：CFSocket和CFStream是核心基础框架的一部�
     5. [CFNetServices API](https://developer.apple.com/library/ios/documentation/Networking/Conceptual/NSNetServiceProgGuide/Introduction.html#//apple_ref/doc/uid/TP40002736)
     6. CFNetDiagnostics API
 
-##KVC 与 KVO
+## KVC 与 KVO
  [基础理解](https://magicalboy.com/kvc_and_kvo.html)
 
-##Block块 `^`
+## Block块 `^`
 
 [精通Objective-C块](https://blog.csdn.net/sps900608/article/details/51911625)
 
@@ -75,7 +102,7 @@ CFNetwork依赖的两个API：CFSocket和CFStream是核心基础框架的一部�
 4. int* a，a中存储的是一个存储单元的地址，而该存储单元中存储的数据是一个整数数值；通过*a可以访问（读取或修改）这个数值。a == &*a 都是该存储单元的地址。 
 5. int** a，a中存储的是一个存储单元的地址，而该存储单元中存储的数据是另外一个存储单元的地址，另外这个存储单元中存储的是一个整数数值；通过**a可以访问（读取或修改）这个数值。 
 
-##Category `()`
+## Category `()`
 1. 一个分类可以将方法的实现分解进一系列分离的文件
 2. 分类中的方法是在运行时被加入类中的
 3. 其代码可以访问包括私有类成员变量在内的所有成员变量
@@ -87,7 +114,7 @@ CFNetwork依赖的两个API：CFSocket和CFStream是核心基础框架的一部�
 @end
 ```
 
-##Protocol `<>`
+## Protocol `<>`
 类似于“接口”
 ```
 //定义一个协议
@@ -108,3 +135,5 @@ CFNetwork依赖的两个API：CFSocket和CFStream是核心基础框架的一部�
 }
 @end
 ```
+
+[protocol 和delegate(协议和代理)的区别](http://www.cnblogs.com/36bian/p/5240517.html)
