@@ -32,15 +32,47 @@ dispatch_async(queue, ^{
     // 这里放异步执行任务代码
 });
 ```
-
+<!-- 
 | 区别 | 并发队列 | 串行队列 | 主队列  |
 | :------| ------: |------: | :------: |
 | 同步(sync) | 没有开启新线程，串行执行任务 | 没有开启新线程，串行执行任务 |主线程调用：死锁卡住不执行<br>其他线程调用：没有开启新线程，串行执行任务 |
-| 异步(async) | 有开启新线程，并发执行任务 | 有开启新线程(1条)，串行执行任务 | 没有开启新线程，串行执行任务 |
+| 异步(async) | 有开启新线程，并发执行任务 | 有开启新线程(1条)，串行执行任务 | 没有开启新线程，串行执行任务 | -->
 
 ### [NSOperationQueue](https://developer.apple.com/documentation/foundation/nsoperationqueue?language=objc)
-[iOS 多线程：『NSOperation、NSOperationQueue』详尽总结](https://www.jianshu.com/p/4b1d77054b35)
+[iOS 多线程：『NSOperation、NSOperationQueue』详尽总结](https://www.jianshu.com/p/4b1d77054b35)：
 
+NSOperation 实现多线程的使用步骤分为三步：
+
+1.  创建操作：先将需要执行的操作封装到一个 NSOperation 对象中。
+    1. 使用子类 NSInvocationOperation
+    2. 使用子类 NSBlockOperation
+    3. 自定义继承自 NSOperation 的子类，通过实现内部相应的方法来封装操作。
+2.  创建队列：创建 NSOperationQueue 对象。
+    1. 主队列
+    ```
+    // 主队列获取方法
+    NSOperationQueue *queue = [NSOperationQueue mainQueue];
+    ```
+    2. 自定义队列（非主队列）
+    ```
+    // 自定义队列创建方法
+    //同时包含了：串行、并发功能。
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    ```
+
+3.  将操作加入到队列中：将 NSOperation 对象添加到 NSOperationQueue 对象中。
+    1. ```- (void)addOperation:(NSOperation *)op;```
+    2. ```- (void)addOperationWithBlock:(void (^)(void))block;```
+
+4. maxConcurrentOperationCount**最大并发操作数**
+5.  NSOperation 操作依赖
+    1. ``` - (void)addDependency:(NSOperation *)op;``` 添加依赖，使当前操作依赖于操作 op 的完成。
+    2. ```- (void)removeDependency:(NSOperation *)op;``` 移除依赖，取消当前操作对操作 op 的依赖。
+    3. ```@property (readonly, copy) NSArray<NSOperation *> *dependencies; ```在当前操作开始执行之前完成执行的所有操作对象数组。
+    
+6. NSOperation 优先级
+7. NSOperation、NSOperationQueue 线程间的通信
+8. NSOperation、NSOperationQueue 线程同步和线程安全(使用NSLock对象示例)
 
 ## [iOS 网络请求](https://www.jianshu.com/p/c34f0740f178)
 ### [AFNetworking](https://github.com/AFNetworking/AFNetworking)
