@@ -4,17 +4,25 @@ hhl's Objective-C and iOS learning notes and test demo
 ## 多线程
 
 ### [NSThread](https://developer.apple.com/documentation/foundation/nsthread?language=objc)
+[iOS 多线程：『pthread、NSThread』详尽总结](https://www.jianshu.com/p/cbaeea5368b1)
 
     线程安全解决方案：
-    可以给线程加锁，在一个线程执行该操作的时候，不允许其他线程进行操作。iOS 实现线程加锁有很多种方式。@synchronized、 NSLock、NSRecursiveLock、NSCondition、NSConditionLock、pthread_mutex、dispatch_semaphore、OSSpinLock、atomic(property) set/ge等等各种方式。
-
-
-### [NSOperationQueue](https://developer.apple.com/documentation/foundation/nsoperationqueue?language=objc)
+    可以给线程加锁，在一个线程执行该操作的时候，不允许其他线程进行操作。
+    iOS 实现线程加锁有很多种方式。@synchronized、 NSLock、NSRecursiveLock、NSCondition、NSConditionLock、pthread_mutex、dispatch_semaphore、OSSpinLock、atomic(property) set/ge等等各种方式。
 
 ### [Grand Central Dispatch(GCD)](https://developer.apple.com/documentation/dispatch?language=objc)
-[iOS 多线程：『GCD』详尽总结](https://www.jianshu.com/p/2d57c72016c6)
+[iOS 多线程：『GCD』详尽总结](https://www.jianshu.com/p/2d57c72016c6)：
 
 ```
+// 串行队列的创建方法
+dispatch_queue_t queue = dispatch_queue_create("net.bujige.testQueue", DISPATCH_QUEUE_SERIAL);
+// 并发队列的创建方法
+dispatch_queue_t queue = dispatch_queue_create("net.bujige.testQueue", DISPATCH_QUEUE_CONCURRENT);
+// 主队列的获取方法
+dispatch_queue_t queue = dispatch_get_main_queue();
+// 全局并发队列的获取方法
+dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
 // 同步执行任务创建方法
 dispatch_sync(queue, ^{
     // 这里放同步执行任务代码
@@ -27,8 +35,11 @@ dispatch_async(queue, ^{
 
 | 区别 | 并发队列 | 串行队列 | 主队列  |
 | :------| ------: |------: | :------: |
-| 同步(sync) | 没有开启新线程，串行执行任务 | 没有开启新线程，串行执行任务 |主线程调用：死锁卡住不执行<br>>其他线程调用：没有开启新线程，串行执行任务 |
+| 同步(sync) | 没有开启新线程，串行执行任务 | 没有开启新线程，串行执行任务 |主线程调用：死锁卡住不执行<br>其他线程调用：没有开启新线程，串行执行任务 |
 | 异步(async) | 有开启新线程，并发执行任务 | 有开启新线程(1条)，串行执行任务 | 没有开启新线程，串行执行任务 |
+
+### [NSOperationQueue](https://developer.apple.com/documentation/foundation/nsoperationqueue?language=objc)
+[iOS 多线程：『NSOperation、NSOperationQueue』详尽总结](https://www.jianshu.com/p/4b1d77054b35)
 
 
 ## [iOS 网络请求](https://www.jianshu.com/p/c34f0740f178)
@@ -40,8 +51,7 @@ dispatch_async(queue, ^{
 
 > Web Kit -> NSURL -> CFNetwork -> BSD scokets
 
-URL加载系统编程指南[URL Loading System Programming Guide]
-(https://developer.apple.com/documentation/foundation/url_loading_system?language=objc)
+[URL Loading System Programming Guide](https://developer.apple.com/documentation/foundation/url_loading_system?language=objc)
 
 CFNetwork依赖的两个API：CFSocket和CFStream是核心基础框架的一部分。
 
