@@ -1,11 +1,13 @@
 # iOS-Learning-Test
 hhl's Objective-C and iOS learning notes and test demo
 
-<br>
 ## 多线程
+
 ### [NSThread](https://developer.apple.com/documentation/foundation/nsthread?language=objc)
+
     线程安全解决方案：
     可以给线程加锁，在一个线程执行该操作的时候，不允许其他线程进行操作。iOS 实现线程加锁有很多种方式。@synchronized、 NSLock、NSRecursiveLock、NSCondition、NSConditionLock、pthread_mutex、dispatch_semaphore、OSSpinLock、atomic(property) set/ge等等各种方式。
+
 
 ### [NSOperationQueue](https://developer.apple.com/documentation/foundation/nsoperationqueue?language=objc)
 
@@ -22,12 +24,13 @@ dispatch_async(queue, ^{
     // 这里放异步执行任务代码
 });
 ```
+
 | 区别 | 并发队列 | 串行队列 | 主队列  |
 | :------| ------: |------: | :------: |
 | 同步(sync) | 没有开启新线程，串行执行任务 | 没有开启新线程，串行执行任务 |主线程调用：死锁卡住不执行<br>>其他线程调用：没有开启新线程，串行执行任务 |
 | 异步(async) | 有开启新线程，并发执行任务 | 有开启新线程(1条)，串行执行任务 | 没有开启新线程，串行执行任务 |
 
-<br>
+
 ## [iOS 网络请求](https://www.jianshu.com/p/c34f0740f178)
 ### [AFNetworking](https://github.com/AFNetworking/AFNetworking)
 
