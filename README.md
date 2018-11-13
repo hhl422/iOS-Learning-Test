@@ -1,6 +1,38 @@
 # iOS-Learning-Test
 hhl's Objective-C and iOS learning notes and test demo
 
+## OC
+
+### 关键词
+常用关键字以@开头
+> @interface、@implementation、@end、
+> @public、@protected、@private、
+> @protocol、@optional、@required、@class、@property、
+> @synthesize(给实例变量起个别名，或者说为同一个变量添加两个名字)、@dynamic(阻止自动合成)
+> @ selector @try、@catch、@throw、@finally
+
+不以@开头关键字
+> self、super、id、_cmd、__block、__strong、__weak等
+
+### 属性
+@property (nonatomic,assign) int b; //申明属性 
+
+> 内存管理特性：retain assign copy strong weak unsafe_unretained autoreleasing
+> 
+> 读 /写特性：readwrite readonly
+> 
+> 多线程特性：nonatomic atomic
+> 
+> 方法名特性：setter getter
+
+### 占位符
+>%d  十进制整数<br>
+>%f  十进制小数(浮点型)<br>
+>%c  字符<br>
+>%s  字符串 <br>
+>%@  OC字符串
+
+
 ## 多线程
 
 ### [NSThread](https://developer.apple.com/documentation/foundation/nsthread?language=objc)
@@ -112,9 +144,18 @@ CFNetwork依赖的两个API：CFSocket和CFStream是核心基础框架的一部�
 
 [Objective-C代码块Block详解](https://blog.csdn.net/CHENYUFENG1991/article/details/49402789)
 
+声明
+```
+//无参数无返回值的block!
+typedef void(^NewType)();
+
+//有返回值有参数的block
+typedef int(^NewType2)(int num1, int num2);
+```
+
  block代码块是OC的一个特性，除了可执行的代码外，还可能包含变量的自动绑定（栈），或内存托管（堆）。所以一个block维护一个状态集（数据），可以在任何时候执行。block用来作为回调特别有用。
 
- block可以作为函数参数或者函数的返回值，而本身又可以带输入参数或返回值。在多线程，异步任务，集合遍历，接口回调等地方用得比较多。使用标识符^.。
+ block可以作为函数参数或者函数的返回值，而本身又可以带输入参数或返回值 [refer1](https://blog.csdn.net/dfman1978/article/details/52171638) 。在多线程，异步任务，集合遍历，接口回调等地方用得比较多。使用标识符^.。
 
  为了性能，block都是分配在栈stack上面的，它的作用域就是当前函数。
  <br>
@@ -158,6 +199,8 @@ CFNetwork依赖的两个API：CFSocket和CFStream是核心基础框架的一部�
 - (id) sub: (Integer *) subtrahend;
 @end
 ```
+
+[分类（类别/Category）与 类扩展（Extension）](https://www.cnblogs.com/pengyunjing/p/5908460.html)
 
 ## Protocol `<>`
 类似于“接口”
