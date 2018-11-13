@@ -1,6 +1,13 @@
 # iOS-Learning-Test
 hhl's Objective-C and iOS learning notes and test demo
 
+## UI布局
+
+自动布局两种方式：代码手写 和 Interface builder
+
+苹果为我们提供的适配框架有：VFL、UIViewAutoresizing、**Auto Layout**、Size Classes等
+
+
 ## OC
 
 ### 关键词
@@ -64,11 +71,11 @@ dispatch_async(queue, ^{
     // 这里放异步执行任务代码
 });
 ```
-<!-- 
+
 | 区别 | 并发队列 | 串行队列 | 主队列  |
 | :------| ------: |------: | :------: |
 | 同步(sync) | 没有开启新线程，串行执行任务 | 没有开启新线程，串行执行任务 |主线程调用：死锁卡住不执行<br>其他线程调用：没有开启新线程，串行执行任务 |
-| 异步(async) | 有开启新线程，并发执行任务 | 有开启新线程(1条)，串行执行任务 | 没有开启新线程，串行执行任务 | -->
+| 异步(async) | 有开启新线程，并发执行任务 | 有开启新线程(1条)，串行执行任务 | 没有开启新线程，串行执行任务 |
 
 ### [NSOperationQueue](https://developer.apple.com/documentation/foundation/nsoperationqueue?language=objc)
 [iOS 多线程：『NSOperation、NSOperationQueue』详尽总结](https://www.jianshu.com/p/4b1d77054b35)：
@@ -155,7 +162,7 @@ typedef int(^NewType2)(int num1, int num2);
 
  block代码块是OC的一个特性，除了可执行的代码外，还可能包含变量的自动绑定（栈），或内存托管（堆）。所以一个block维护一个状态集（数据），可以在任何时候执行。block用来作为回调特别有用。
 
- block可以作为函数参数或者函数的返回值，而本身又可以带输入参数或返回值 [refer1](https://blog.csdn.net/dfman1978/article/details/52171638) 。在多线程，异步任务，集合遍历，接口回调等地方用得比较多。使用标识符^.。
+ block可以作为函数参数或者函数的返回值，而本身又可以带输入参数或返回值 [refer1](https://blog.csdn.net/dfman1978/article/details/52171638) [refer2](https://blog.csdn.net/shadowee/article/details/73200872)。在多线程，异步任务，集合遍历，接口回调等地方用得比较多。使用标识符^.。
 
  为了性能，block都是分配在栈stack上面的，它的作用域就是当前函数。
  <br>
