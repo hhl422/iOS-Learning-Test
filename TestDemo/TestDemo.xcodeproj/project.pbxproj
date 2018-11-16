@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0AB61F219EB19B0088A0D2 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0AB61E219EB19B0088A0D2 /* CommonUtil.m */; };
 		7A193460219D4A1600F99811 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A19345F219D4A1600F99811 /* AppDelegate.m */; };
 		7A193463219D4A1600F99811 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A193462219D4A1600F99811 /* ViewController.m */; };
 		7A193466219D4A1600F99811 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A193464219D4A1600F99811 /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 		7A193478219D4A1900F99811 /* TestDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A193477219D4A1900F99811 /* TestDemoTests.m */; };
 		7A193483219D4A1900F99811 /* TestDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A193482219D4A1900F99811 /* TestDemoUITests.m */; };
 		7A193499219D663500F99811 /* SignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A193498219D663500F99811 /* SignUpView.m */; };
+		7AAC3913219E6CA70017A4F3 /* SignInview.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAC3912219E6CA70017A4F3 /* SignInview.m */; };
+		7AAC3919219E99190017A4F3 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAC3918219E99190017A4F3 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A0AB61D219EB19B0088A0D2 /* CommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
+		7A0AB61E219EB19B0088A0D2 /* CommonUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
 		7A19345B219D4A1600F99811 /* TestDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A19345E219D4A1600F99811 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A19345F219D4A1600F99811 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -54,6 +59,10 @@
 		7A193484219D4A1A00F99811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A193497219D663500F99811 /* SignUpView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpView.h; sourceTree = "<group>"; };
 		7A193498219D663500F99811 /* SignUpView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpView.m; sourceTree = "<group>"; };
+		7AAC3911219E6CA70017A4F3 /* SignInview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignInview.h; sourceTree = "<group>"; };
+		7AAC3912219E6CA70017A4F3 /* SignInview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignInview.m; sourceTree = "<group>"; };
+		7AAC3917219E99180017A4F3 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		7AAC3918219E99190017A4F3 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +113,8 @@
 		7A19345D219D4A1600F99811 /* TestDemo */ = {
 			isa = PBXGroup;
 			children = (
+				7AAC3917219E99180017A4F3 /* MBProgressHUD.h */,
+				7AAC3918219E99190017A4F3 /* MBProgressHUD.m */,
 				7A19345E219D4A1600F99811 /* AppDelegate.h */,
 				7A19345F219D4A1600F99811 /* AppDelegate.m */,
 				7A193461219D4A1600F99811 /* ViewController.h */,
@@ -115,6 +126,10 @@
 				7A19346D219D4A1900F99811 /* main.m */,
 				7A193497219D663500F99811 /* SignUpView.h */,
 				7A193498219D663500F99811 /* SignUpView.m */,
+				7AAC3911219E6CA70017A4F3 /* SignInview.h */,
+				7AAC3912219E6CA70017A4F3 /* SignInview.m */,
+				7A0AB61D219EB19B0088A0D2 /* CommonUtil.h */,
+				7A0AB61E219EB19B0088A0D2 /* CommonUtil.m */,
 			);
 			path = TestDemo;
 			sourceTree = "<group>";
@@ -268,8 +283,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A193499219D663500F99811 /* SignUpView.m in Sources */,
+				7AAC3919219E99190017A4F3 /* MBProgressHUD.m in Sources */,
+				7A0AB61F219EB19B0088A0D2 /* CommonUtil.m in Sources */,
 				7A193463219D4A1600F99811 /* ViewController.m in Sources */,
 				7A19346E219D4A1900F99811 /* main.m in Sources */,
+				7AAC3913219E6CA70017A4F3 /* SignInview.m in Sources */,
 				7A193460219D4A1600F99811 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

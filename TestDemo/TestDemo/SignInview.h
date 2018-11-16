@@ -1,8 +1,8 @@
 //
-//  SignUpView.h
+//  SignInview.h
 //  TestDemo
 //
-//  Created by hl h on 2018/11/15.
+//  Created by hl h on 2018/11/16.
 //  Copyright © 2018年 hl h. All rights reserved.
 //
 
@@ -10,10 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SignUpView : UIView
+@interface SignInview : UIView
 
 @property (nonatomic, copy) void (^block)(UIButton *);
-+(instancetype) getSignUpView:(CGRect)frame addBlock: (void(^)(UIButton *button))block ;
+
++(instancetype) getSignInview:(CGRect)frame addBlock: (void(^)(UIButton *button))block;
 @end
 
 NS_ASSUME_NONNULL_END

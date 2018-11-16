@@ -8,9 +8,11 @@
 
 #import "ViewController.h"
 #import "SignUpView.h"
+#import "SignInview.h"
 
 @interface ViewController ()
-
+@property UIView *signup;
+@property UIView *signin;
 @end
 
 @implementation ViewController
@@ -21,9 +23,21 @@
     
     self.title = @"注册/登陆";//咋没显示?_?
     
-    SignUpView *SPV = [SignUpView getSignUpView: CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width , [UIScreen mainScreen].bounds.size.height)];
-//    [self.navigationController pushViewController:SPVC animated:YES];
-    [self.view addSubview: SPV ];
+    //实例化登陆页面，添加登陆按钮回调
+    _signin = [SignInview getSignInview: CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width , [UIScreen mainScreen].bounds.size.height)
+                                       addBlock: ^(UIButton *button) {
+                                           NSLog(@"匹配用户信息，登陆");
+                                       }];
+    //实例化注册页面，添加注册按钮回调
+    _signup = [SignUpView getSignUpView: CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width , [UIScreen mainScreen].bounds.size.height)
+                                       addBlock: ^(UIButton *button) {
+                                           NSLog(@"注册，纪录用户信息");
+                                           NSLog(@"跳转登录页面");
+                                          [self.signup removeFromSuperview];
+                                           [self.view addSubview: self.signin];
+                                       }];
+    [self.view addSubview: _signup];
+    
 }
 
 
